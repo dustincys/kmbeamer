@@ -1,0 +1,23 @@
+\frametitle{代码高亮}
+C代码:
+\begin{minted}[mathescape,
+               linenos,     % displays the line numbers
+               frame=leftline,
+baselinestretch=0.5]{csharp}
+  /*
+  这里可以显示公式：
+  $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter
+  of an $n$-sided regular polygon circumscribing a
+  circle of diameter $d$.
+  */
+  const double pi = 3.1415926535
+\end{minted}
+
+python代码:
+\begin{minted}[mathescape, linenos]{python}
+# Returns $\sum_{i=1}ˆ{n}i$
+# 多样注释格式和缩进，行码
+def sum_from_one_to(n):
+    r = range(1, n + 1)
+    return sum(r)
+\end{minted}
