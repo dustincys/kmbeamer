@@ -20,9 +20,32 @@
 % 设定中文字体
 \usepackage[BoldFont,SlantFont,CJKchecksingle,CJKnumber]{xeCJK}
 \usefonttheme[onlymath]{serif}
+
+\xeCJKsetemboldenfactor{1}%只对随后定义的CJK字体有效
+\setCJKfamilyfont{hei}{SimHei}
+\xeCJKsetemboldenfactor{4}
+\setCJKfamilyfont{song}{SimSun}
+\xeCJKsetemboldenfactor{1}
+\setCJKfamilyfont{fs}{FangSong}
+\setCJKfamilyfont{kai}{KaiTi}
+\setCJKfamilyfont{li}{LiSu}
+\setCJKfamilyfont{xw}{STXinwei}
+
 \setCJKmainfont[BoldFont={SimHei},ItalicFont={FangSong}]{SimSun}
 \setCJKsansfont{SimSun}
 \setCJKmonofont{FangSong}
+
+\newcommand{\hei}{\CJKfamily{hei}}% 黑体   (Windows自带simhei.ttf)
+\newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows自带simsun.ttf)
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体 (Windows自带simfs.ttf)
+\newcommand{\kaishu}{\CJKfamily{kai}}      % 楷体   (Windows自带simkai.ttf)
+\newcommand{\li}{\CJKfamily{li}}        % 隶书   (Windows自带simli.ttf)
+\newcommand{\xw}{\CJKfamily{xw}}        % 隶书   (Windows自带simli.ttf)
+\newfontfamily\arial{Arial}
+\newfontfamily\timesnewroman{Times New Roman}
+
+
+
 \defaultfontfeatures{Mapping=tex-text}
 \usepackage{xunicode}
 \usepackage{xltxtra}
@@ -102,7 +125,7 @@
         orp,
         fade title fill/.style={
           fill=black,
-          opacity=0.8,
+          opacity=0.6,
         },
         #1
       ]
@@ -121,7 +144,7 @@
 \tikzstyle{linktype2}= [-latex, snake=snake,line after snake=4mm, draw=structure.fg, line width=1.5pt]
 \tikzstyle{every picture}+=[remember picture]
 
-\newcommand{\point}[1]{\textbf{\usebeamercolor[fg]{structure}#1}} %定义高亮文本
+\newcommand{\point}[1]{\textbf{\usebeamercolor[fg]{structure}\hei#1}} %定义高亮文本
 \newcommand{\bcite}[1]{\textbf{\textcolor{red!80}{\textsuperscript{[}\footfullcite{#1}\textsuperscript{]}}}}
 
 %----------------------------------------------------------------------------------------
@@ -148,6 +171,35 @@
 %\end{frame}
 
 \begin{frame}
+\frametitle{三个“？”}
+\begin{block}{为什么肿瘤/癌症难以治疗？}
+  肿瘤是由多种细胞组成的复杂混合体，大致包括发生变异的肿瘤细胞、未发生变异的肿瘤细胞、正常细胞（这种现象称为\point{异质性}）。
+一种治疗方法，只能针对个别成分发生作用，未被杀死的肿瘤细胞会迅速占据被杀死细胞的空间和营养，导致病情越治越坏。
+\end{block}
+\begin{block}{什么是亚克隆？}
+目前没有一个标准的定义\bcite{gawad2016single}。
+肿瘤中的细胞按照基因组相似度聚类（类别数未知），每一个类就是亚克隆。
+\end{block}
+\begin{block}{亚克隆重组有什么意义？}
+  获得肿瘤的组成成分有利于制定更清晰的肿瘤治疗方案。
+  通过测序数据获得肿瘤组成成分的过程称为\point{亚克隆重组}。
+\end{block}
+\end{frame}
+
+\bgroup
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{normal text}{fg=black}
+\begin{frame}
+\frametitle{肿瘤的异质性是进化过程}
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{pic/hetero.pdf}
+\end{figure}
+\end{frame}
+\egroup
+
+
+\begin{frame}
 \frametitle{目录} 
 \tableofcontents 
 \end{frame}
@@ -156,36 +208,60 @@
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
 %------------------------------------------------
-\section{意义}
+
+\section{肿瘤/正常配对样本的全基因组测序数据的耦合GC bias及其校正方法}
 
 \begin{frame}
-\frametitle{亚克隆重组意义}
-\begin{block}{肿瘤难以治疗}
-  肿瘤尤其恶性肿瘤（癌症），现有的物理切除，药物治疗方法难以治愈。
-  因为肿瘤是由多种细胞组成的复杂混合体，大致包括发生变异的肿瘤细胞、未发生变异的肿瘤细胞、正常细胞。
-  一种治疗方法，只能针对个别成分发生作用。
-\end{block}
-\begin{block}{亚克隆重组意义}
-  获得肿瘤组成成分可以使肿瘤治疗采取更清晰的方案。
-  通过测序数据获得肿瘤组成成分称为亚克隆重组。
-\end{block}
-\end{frame}
-
-\bgroup
-\setbeamercolor{background canvas}{bg=white}
-\begin{frame}
-\frametitle{肿瘤的异质性}
+\frametitle{肿瘤/正常样本的测序数据}
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{pic/hetero.pdf}
+\includegraphics[width=0.9\linewidth]{pic/IGV.png}
+\caption{肿瘤和正常样本配对测序（Tumor nomral paired sequencing）}
 \end{figure}
+\pause
+\fadetitle{\Huge{\centerline{如何检测肿瘤中的变异？}}}
 \end{frame}
-\egroup
 
-\section{研究内容和方法}
+\subsection{SCNA检测流程}
+\begin{frame}
+\frametitle{SCNA检测流程}
+  \begin{itemize}[<+->]
+    \item 根据覆盖度片段  Segmentation (BIC-seq)
+    \item 根据每一个片段 （segment）之内的read性质，确定SCNA类型
+    \begin{itemize}[<+->]
+      \item 覆盖度 read depth/count
+      \item 等位型 allele type
+    \end{itemize}
+  \end{itemize}
+  \pause
+      \begin{block}{影响覆盖度的因素}
+    \begin{itemize}
+      \item 平均拷贝数 Average copy number
+      \item Mappability (GC bias)
+    \end{itemize}
+      \end{block}
+\end{frame}
 
-\subsection{肿瘤/正常样本的耦合GC bias校正}
-\subsection{肿瘤浅测序数据的降噪声}
-\subsection{亚克隆重组模型}
+\subsection{耦合的GC bias}
+
+\begin{frame}
+现有的对影响覆盖度的因素建模的方法如下\bcite{li2015mixclone}，使用$\theta_j$表示第$j$个片段内的由片段长度和映射性（mappability）造成的不均匀性，$\bar{C}_j$表示该片段的平均拷贝数，$D_j^N$表示在正常样本中的这个片段内的read数, $D_j^T$表示在肿瘤样本中的这个片段内的read数, 那么对于片段$i$和片段$j$，有${D_i^T}/{D_i^T} ={\bar{C}_i\theta_i}/{\bar{C}_j\theta_j}$，其中$\theta_i / \theta_j = D_i^N / D_j^N$ .
+如果
+\begin{equation}
+    \frac{D_i^T}{D_j^T} = \frac{\bar{C}_i\theta_i}{\bar{C}_j\theta_j} = \frac{\bar{C}_i}{\bar{C}_j} * \frac{D_i^N}{D_j^N},
+\end{equation}
+那么，
+\begin{equation}
+  \log{\frac{D_i^T}{D_i^N}} - \log{\frac{D_j^T}{D_j^N}} = \log{\frac{\bar{C}_i}{\bar{C}_j}}.
+  \label{eqassumption_mixclone}
+\end{equation}
+\pause
+\fadetitle{公式~(\ref{eqassumption_mixclone})说明，对于所有的片段$i = 1, \ldots, m$，$\log{\frac{D_i^T}{D_i^N}}$可以进行近邻聚类。}
+\end{frame}
+
+\subsection{Pre-SCNAClonal --- 肿瘤/正常样本全基因组测序数据的一种耦合GC-bias校正和可视化工具}
+
+\section{肿瘤浅测序数据的降噪声}
+\section{亚克隆重组模型}
 
 %\subsection{中英文混合排版}
 %\begin{frame}
