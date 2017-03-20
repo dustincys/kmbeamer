@@ -182,7 +182,7 @@
 \end{block}
 \begin{block}{亚克隆重组有什么意义？}
   获得肿瘤的组成成分有利于制定更清晰的肿瘤治疗方案。
-  通过测序数据获得肿瘤组成成分的过程称为\point{亚克隆重组}。
+  获得肿瘤组成成分的过程称为\point{亚克隆重组}。
 \end{block}
 \end{frame}
 
@@ -200,8 +200,8 @@
 
 
 \begin{frame}
-\frametitle{目录} 
-\tableofcontents 
+\frametitle{目录}
+\tableofcontents
 \end{frame}
 
 %----------------------------------------------------------------------------------------
@@ -209,7 +209,7 @@
 %----------------------------------------------------------------------------------------
 %------------------------------------------------
 
-\section{肿瘤/正常配对样本的全基因组测序数据的耦合GC bias及其校正方法}
+\section{肿瘤/正常配对样本的全基因组测序数据的复杂GC bias及其校正方法}
 
 \begin{frame}
 \frametitle{肿瘤/正常样本的测序数据}
@@ -224,10 +224,10 @@
 \subsection{SCNA检测流程}
 \begin{frame}
 \frametitle{SCNA检测流程}
-  \begin{itemize}[<+->]
+  \begin{itemize}
     \item 根据覆盖度片段  Segmentation (BIC-seq)
     \item 根据每一个片段 （segment）之内的read性质，确定SCNA类型
-    \begin{itemize}[<+->]
+    \begin{itemize}
       \item 覆盖度 read depth/count
       \item 等位型 allele type
     \end{itemize}
@@ -240,8 +240,6 @@
     \end{itemize}
       \end{block}
 \end{frame}
-
-\subsection{耦合的GC bias}
 
 \begin{frame}
 现有的对影响覆盖度的因素建模的方法如下\bcite{li2015mixclone}，使用$\theta_j$表示第$j$个片段内的由片段长度和映射性（mappability）造成的不均匀性，$\bar{C}_j$表示该片段的平均拷贝数，$D_j^N$表示在正常样本中的这个片段内的read数, $D_j^T$表示在肿瘤样本中的这个片段内的read数, 那么对于片段$i$和片段$j$，有${D_i^T}/{D_i^T} ={\bar{C}_i\theta_i}/{\bar{C}_j\theta_j}$，其中$\theta_i / \theta_j = D_i^N / D_j^N$ .
@@ -258,10 +256,46 @@
 \fadetitle{公式~(\ref{eqassumption_mixclone})说明，对于所有的片段$i = 1, \ldots, m$，$\log{\frac{D_i^T}{D_i^N}}$可以进行近邻聚类。}
 \end{frame}
 
-\subsection{Pre-SCNAClonal --- 肿瘤/正常样本全基因组测序数据的一种耦合GC-bias校正和可视化工具}
+\begin{frame}
+\begin{figure}
+\includegraphics[width=0.6\linewidth]{pic/stripe.pdf}
+\caption{Stripe}
+\end{figure}
+\end{frame}
 
-\section{肿瘤浅测序数据的降噪声}
+\subsection{Pre-SCNAClonal --- 肿瘤/正常样本全基因组测序数据的一种复杂GC-bias校正和可视化工具}
+
 \section{亚克隆重组模型}
+
+\subsection{VAF信号校正}
+
+\begin{frame}
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{pic/BAFrd.pdf}
+\caption{BAF read count distribution}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{VAF信号过滤（平滑）}
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{pic/BAFdist.pdf}
+\caption{BAF distribution}
+\end{figure}
+\end{frame}
+
+\subsection{贝叶斯概率模型}
+
+\begin{frame}
+\begin{block}{如何利用（条带的）先验信息？}
+\begin{itemize}
+\item 平均拷贝数相等
+\item 基线拷贝数为2
+\item 其余条带的平均拷贝数由下到上递增
+\end{itemize}
+
+\end{block}
+\end{frame}
 
 %\subsection{中英文混合排版}
 %\begin{frame}
