@@ -29,7 +29,7 @@
 \setbeamertemplate{headline}{}
 \setbeamertemplate{footline}{
   \setbox\kmbmr@tmpboxa\hbox{[\insertshortauthor @\insertshortinstitute\; {
-\color{chartreuse}\ifnum\insertsectionnumber>0\boldmath\insertsectionnumber.~\insertsection\else\char"7E\fi}]\$~\_}
+\color{chartreuse}\ifnum\insertsectionnumber>0$\sim$/\boldmath\insertsectionnumber.~\insertsection\else$\sim$\fi}]\$~\_}
   \setbox\kmbmr@tmpboxb\hbox{[\insertframenumber/\inserttotalframenumber]}
   \ht\kmbmr@tmpboxa=1mm\dp\kmbmr@tmpboxa=0mm
   \ht\kmbmr@tmpboxb=1mm\dp\kmbmr@tmpboxb=0mm
@@ -40,12 +40,12 @@
 \setbeamertemplate{title page}{
   \renewcommand\thefootnote{\fnsymbol{footnote}}
   \setcounter{footnote}{1} % \dagger
-  \noindent { \usebeamercolor[fg]{normal text}\texttt{\mdseries >>> }} {\usebeamerfont{title}\usebeamercolor[fg]{title}\bfseries\boldmath\inserttitle}
-  \ifx\insertsubtitle\@empty\else\\>>> {\usebeamerfont{title}\usebeamercolor[fg]{title}\insertsubtitle}\fi~\\[1em]
-  Name: \insertauthor\ \ifx\insertinstitute\@empty\else(\insertinstitute)\fi\\
-  Date: \insertdate
-  \renewcommand\thefootnote{\arabic{footnote}}
-  \setcounter{footnote}{0}
+  \noindent {\usebeamercolor[fg]{normal text}\texttt{\mdseries>>> }} {\usebeamerfont{title}\usebeamercolor[fg]{title}\bfseries\boldmath\inserttitle}
+\ifx\insertsubtitle\@empty\else\\>>> {\usebeamerfont{title}\usebeamercolor[fg]{title}\insertsubtitle}\fi~\\[1em]
+Name: \insertauthor\ \ifx\insertinstitute\@empty\else(\insertinstitute)\fi\\
+Date: \insertdate
+\renewcommand\thefootnote{\arabic{footnote}}
+\setcounter{footnote}{0}
 }
 
 \mode
