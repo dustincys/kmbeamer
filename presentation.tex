@@ -148,6 +148,10 @@
 \tikzstyle{nodeisprior}= [circle, fill=blue!70!black, draw=white]
 \tikzstyle{nodeislatent}= [circle, fill=green!40!black, draw=white]
 
+\addtobeamertemplate{block begin}{%
+  \setlength{\textwidth}{\textwidth}%
+}{}
+
 \newcommand{\point}[1]{\textbf{\usebeamercolor[fg]{structure}\hei#1}} %定义高亮文本
 \newcommand{\bcite}[1]{\textbf{\textcolor{red!80}{\textsuperscript{[}\footfullcite{#1}\textsuperscript{]}}}}
 
@@ -283,7 +287,7 @@
 \begin{frame}
 \frametitle{VAF信号过滤（平滑）}
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{pic/BAFdist.pdf}
+\includegraphics[width=\linewidth]{pic/BAFdist.pdf}
 \caption{BAF distribution}
 \end{figure}
 \end{frame}
