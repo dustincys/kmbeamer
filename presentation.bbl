@@ -16,5 +16,58 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \sortlist{entry}{nty}
+    \entry{gawad2016single}{article}{}
+      \name{labelname}{3}{}{%
+        {{hash=7ff8733e06722cb06410dbc66069ddcf}{Gawad}{G\bibinitperiod}{Charles}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=585c9be8ad6fcce6df65fb52edf6b73c}{Koh}{K\bibinitperiod}{Winston}{W\bibinitperiod}{}{}{}{}}%
+        {{hash=c99c7bb441ca37597d005efd750ead37}{Quake}{Q\bibinitperiod}{Stephen\bibnamedelima R}{S\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=7ff8733e06722cb06410dbc66069ddcf}{Gawad}{G\bibinitperiod}{Charles}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=585c9be8ad6fcce6df65fb52edf6b73c}{Koh}{K\bibinitperiod}{Winston}{W\bibinitperiod}{}{}{}{}}%
+        {{hash=c99c7bb441ca37597d005efd750ead37}{Quake}{Q\bibinitperiod}{Stephen\bibnamedelima R}{S\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{294bd53246d47c6acf26c0772389ef59}
+      \strng{fullhash}{294bd53246d47c6acf26c0772389ef59}
+      \field{sortinit}{G}
+      \field{labeltitle}{Single-cell genome sequencing: current state of the science}
+      \field{journaltitle}{Nature Reviews Genetics}
+      \field{number}{3}
+      \field{title}{Single-cell genome sequencing: current state of the science}
+      \field{volume}{17}
+      \field{year}{2016}
+      \field{pages}{175\bibrangedash 188}
+    \endentry
+    \entry{li2015mixclone}{article}{}
+      \name{labelname}{2}{}{%
+        {{hash=cf1f0547c288eff0857572dcc12516bb}{Li}{L\bibinitperiod}{Yi}{Y\bibinitperiod}{}{}{}{}}%
+        {{hash=80995e442d7d89d8247316162a3e1945}{Xie}{X\bibinitperiod}{Xiaohui}{X\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=cf1f0547c288eff0857572dcc12516bb}{Li}{L\bibinitperiod}{Yi}{Y\bibinitperiod}{}{}{}{}}%
+        {{hash=80995e442d7d89d8247316162a3e1945}{Xie}{X\bibinitperiod}{Xiaohui}{X\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {BioMed Central Ltd}%
+      }
+      \strng{namehash}{06483e7bbfbe43bc40aa81f2aa625e72}
+      \strng{fullhash}{06483e7bbfbe43bc40aa81f2aa625e72}
+      \field{sortinit}{L}
+      \field{labeltitle}{MixClone: a mixture model for inferring tumor subclonal populations}
+      \field{journaltitle}{BMC genomics}
+      \field{number}{Suppl 2}
+      \field{title}{MixClone: a mixture model for inferring tumor subclonal populations}
+      \field{volume}{16}
+      \field{year}{2015}
+      \field{pages}{S1}
+    \endentry
+  \endsortlist
+\endrefsection
 \endinput
 

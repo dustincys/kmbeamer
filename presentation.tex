@@ -59,6 +59,9 @@
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{mathtools} %数学公式中case情况
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb, mathrsfs, bm}
 \usepackage{tikz}% tikz做图
 \usetikzlibrary{snakes}
 \usepackage{minted}%code highlighting
@@ -362,15 +365,15 @@
   \begin{center}
     \tikzstyle{scalestyle}=[scale=1]
   \begin{tikzpicture}[yscale=1.6, xscale=1.5]
-	\foreach \symbol/\name/\x/\y in {$b_{i,m}^n$/1/0/1, $H_0$/5/-1/4, \tiny${a_\alpha, b_\alpha}$/6/1/5, $d_{i,m}^n$/7/-1/1, \tiny${{D_{s,i}^{T}}^n}$/11/1/2, $S^n$/13/2/4, \tiny{${{D_{s,i}^{N}}^n}$}/14/1/3}
+    \foreach \symbol/\name/\x/\y in {$b_{i,m}^n$/1/0/1, $H_0$/5/-1/3, \tiny${a_\alpha, b_\alpha}$/6/0/5, $d_{i,m}^n$/7/-1/1, \tiny${{D_{s,i}^{T}}^n}$/11/1/3, $\bm{\beta}_s^n$/13/2/4, \tiny{${{D_{s,i}^{N}}^n}$}/14/1/4}
 	{
 	  \node[nodeisprior, scalestyle] (N-\name) at (\x, \y) {\symbol};
 	}
-	\foreach \symbol/\name/\x/\y in { $\phi^n$/2/0/2, $H$/3/0/3, $\alpha$/4/1/4, $\psi_{i,m}^n$/8/1/1,$\pi_{i, m}^n$/9/2/1, $C_{s,i}^n$/10/2/2, $\beta_s^n$/12/2/3}
+	\foreach \symbol/\name/\x/\y in { $\phi^n$/2/0/2, $H$/3/0/3, $\alpha$/4/0/4, $\psi_{i,m}^n$/8/1/1,$\pi_{i, m}^n$/9/2/1, $C_{s,i}^n$/10/2/2, $\bm{L}_s^n$/12/2/3}
 	{
 	  \node[nodeislatent, scalestyle] (N-\name) at (\x, \y) {\symbol};
 	}
-	\foreach \from/\to in {6/4, 4/3, 5/3, 3/2, 2/1, 7/1, 8/1, 9/8, 10/9, 10/11, 2/11, 12/10, 13/12,14/11}
+	\foreach \from/\to in {6/4, 4/3, 5/3, 3/2, 2/1, 7/1, 8/1, 9/8, 10/9, 10/11, 2/11, 12/10, 13/12,14/11, 2/10}
 	{
 	  \draw[unlinktype1] (N-\from) -- (N-\to);
 	}
@@ -383,8 +386,8 @@ $$\alpha \sim \text{Gamma}(a_\alpha, b_\alpha)$$
 $$H_0 \sim \text{Uniform}([0,1]^M)$$
 $$H \sim \text{DP}(H_0, \alpha)$$
 $$\phi^n  \sim H$$
-$$C \sim \text{Categorical}(\beta_s^n)$$
-$$\beta_s^n \sim \text{Dir}(S^n)$$
+$$C \sim \text{Categorical}(\bm{L}_s^n)$$
+$$\bm{L}_s^n \sim \text{Dir}(\bm{\beta}_s^n)$$
 \end{columns}
 \end{frame}
 
@@ -397,18 +400,19 @@ $$\beta_s^n \sim \text{Dir}(S^n)$$
   \begin{center}
     \tikzstyle{scalestyle}=[scale=1]
   \begin{tikzpicture}[yscale=1.6, xscale=1.5]
-	\foreach \symbol/\name/\x/\y in {$b_{i,m}^n$/1/0/1, $H_0$/5/-1/4, \tiny${a_\alpha, b_\alpha}$/6/1/5, $d_{i,m}^n$/7/-1/1, \tiny{${{D_{s,i}^{T}}^n}$}/11/1/2, $S^n$/13/2/4, \tiny{${{D_{s,i}^{N}}^n}$}/14/1/3}
+    \foreach \symbol/\name/\x/\y in {$b_{i,m}^n$/1/0/1, $H_0$/5/-1/3, \tiny${a_\alpha, b_\alpha}$/6/0/5, $d_{i,m}^n$/7/-1/1, \tiny${{D_{s,i}^{T}}^n}$/11/1/3, $\bm{\beta}_s^n$/13/2/4, \tiny{${{D_{s,i}^{N}}^n}$}/14/1/4}
 	{
 	  \node[nodeisprior, scalestyle] (N-\name) at (\x, \y) {\symbol};
 	}
-	\foreach \symbol/\name/\x/\y in { $\phi^n$/2/0/2, $H$/3/0/3, $\alpha$/4/1/4, $\psi_{i,m}^n$/8/1/1,$\pi_{i, m}^n$/9/2/1, $C_{s,i}^n$/10/2/2, $\beta_s^n$/12/2/3}
+	\foreach \symbol/\name/\x/\y in { $\phi^n$/2/0/2, $H$/3/0/3, $\alpha$/4/0/4, $\psi_{i,m}^n$/8/1/1,$\pi_{i, m}^n$/9/2/1, $C_{s,i}^n$/10/2/2, $\bm{L}_s^n$/12/2/3}
 	{
 	  \node[nodeislatent, scalestyle] (N-\name) at (\x, \y) {\symbol};
 	}
-	\foreach \from/\to in {6/4, 4/3, 5/3, 3/2, 2/1, 7/1, 8/1, 9/8, 10/9, 10/11, 2/11, 12/10, 13/12, 14/11}
+	\foreach \from/\to in {6/4, 4/3, 5/3, 3/2, 2/1, 7/1, 8/1, 9/8, 10/9, 10/11, 2/11, 12/10, 13/12,14/11, 2/10}
 	{
 	  \draw[unlinktype1] (N-\from) -- (N-\to);
 	}
+
   \end{tikzpicture}
   \end{center}
   \end{figure}
@@ -425,6 +429,96 @@ $$\xi = \frac{\phi^n * C * \mu + (1- \phi^n) *2*\frac{1}{2}}{\phi^n * C + (1- \p
 %\noindent\makebox[\linewidth]{\usebeamercolor[fg]{structure}\rule{\linewidth}{0.8pt}}
 ${D_{s, i}^T}^n \sim \text{Possion}\left(\frac{\overline{C}_{s,i}^n}{2} * \sqrt[J]{\prod\limits_{j = 1}^J\frac{D_{j}^T}{D_j^N}} * {D_{s, i}^N}^n\right)$
 \end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{概率模型参数}
+$$
+\pi_{i,m}^n \in \{\oslash, \text{P}, \text{M}, \text{PP}, \text{PM}, \text{MM}, \text{PPP}, \ldots, \text{MMMMMMM}\}
+$$
+$$
+C_{s, i}^n \in \{0, 1, 2, \ldots, 7\}
+$$
+$$
+\bm{L}_s^n = \{l_0, l_1, \ldots, l_7\}
+$$
+$$
+\bm{\beta}_s^n = \{\beta_{s0}^n, \beta_{s1}^n,\ldots, \beta_{s7}^n\}
+$$
+\begin{equation*}
+\begin{array}{rl}
+  j &= 0, \ldots, 7 \\
+  \beta_{sj}^n & =\left\{
+\begin{array}{l}
+  \frac{0.8}{m},\; \text{if}\; j = s \\
+  \frac{0.2}{8 - m},\; \text{if}\; j \neq s\\
+\end{array}
+\right.
+\end{array}
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{抽样方法}
+  \begin{equation*}
+\begin{split}
+  P(\phi, C | D, b) & \varpropto P(D, b|\phi, C) * P(\phi) * P(C|\phi) \\
+		    & \varpropto P(D | \phi, C) * P(b | \phi,C) * P(\phi) * P(C|\phi)  \\
+      & = P(\phi) * P(C | \phi) * \\
+\end{split}
+  \end{equation*}
+  \begin{equation*}
+      \prod\limits_{n = 1} ^N \prod\limits_{s=1}^S \prod\limits_{i =1} ^I \left[P\left( \left\{ D_{s,j}^T\right\}^n | \left\{ D_{s,j}^N\right\}^n, \phi^n, C_{s,i}^n\right)\prod\limits_{m=1}^M P\left( b_{i,m}^n | d_{i,m}^n, \phi^n, \psi_{i,m}^n \right)  \right]
+  \end{equation*}
+\end{frame}
+
+
+\end{document}
+\begin{frame}
+  \begin{block}{扔硬币问题}
+   扔一次硬币，正面朝上，再扔一次还是正面的概率（硬币均匀度）是多少？ 
+  \end{block}
+  \begin{block}{贝叶斯公式}
+ \begin{equation*}
+ \begin{split}P(x | D )& = \frac{P(x)\times P(D | x)}{P(D)}\\
+		       & = \frac{P(x)\times P(D | x)}{\int_0^1P(x)\times P(D | x)dx}\\
+ \end{split}
+ \end{equation*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+“别噎死”门徒们认为硬币均匀程度是个概率分布，先验设为均匀分布，借用该文中的定义，应该是$P(p_\text{正}) \sim \mathrm{Uniform}(0,1)$。 那么扔了一次正面朝上之后，这个均匀程度被修正了，这个均匀程度的修正过程就是“别噎死”公式：
+
+\begin{equation*}
+  \begin{split}
+P(p_\text{正} | m_\text{正}=1, m_\text{负}=0)& = \frac{p_\text{正}^1(1-p_\text{正})^0P(p_\text{正})}{\int_0^1 t^1(1-t)^0dt}\\
+&= \frac{\Gamma(3)}{\Gamma(2)\Gamma(1)} p_\text{正}\\
+\end{split}
+\end{equation*}
+右侧正好对应的是$p_\text{正}$的贝塔分布：
+\begin{equation*}
+P(p_\text{正} | m_\text{正}, m_\text{负}) \sim \mathrm{Be}(m_\text{正}+1, m_\text{负}+1)
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\begin{block}{还是硬币问题}
+有一对夫妇已先生了一个儿子，之后又生了一个儿子，那么这对夫妇再生一个小孩是儿子的概率是多少？
+\end{block}
+第一步可以得到：
+\begin{equation*}
+P(p_{\text{正}_1} | m_\text{正}=1, m_\text{负}=0) \sim \mathrm{Be}(2,1)
+\end{equation*}
+再投一次硬币：
+\begin{equation*}
+  \begin{split} P(p_{\text{正}_2} | m_\text{正}=1, m_\text{负}=0) &= \frac{2p_{æ­£}\times p_{正}}{\int_0^1 2t^2dt}\\& = \frac{\Gamma(4)}{\Gamma(3)\Gamma(1)}p_{正}^2
+\end{split}
+\end{equation*}
+即：
+\begin{equation*}
+  P(p_{\text{正}_2} | m_\text{正}=1, m_\text{负}=0) = \mathrm{Be}(3,1) 
+\end{equation*}
 \end{frame}
 
 %\subsection{中英文混合排版}
@@ -880,4 +974,3 @@ ${D_{s, i}^T}^n \sim \text{Possion}\left(\frac{\overline{C}_{s,i}^n}{2} * \sqrt[
 %
 %%------------------------------------------------
 
-\end{document} 
