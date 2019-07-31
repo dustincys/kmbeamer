@@ -18,16 +18,25 @@
 \setbeamercolor*{block title alerted}{fg=white!90!red,bg=black!10!red}
 \setbeamercolor*{block body alerted}{fg=white!90!red,bg=black!10!red}
 % 设定中文字体
-\usepackage[BoldFont,SlantFont,CJKchecksingle,CJKnumber]{xeCJK}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            Chinese font                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[UTF8,fontset=windowsnew]{ctex}
 \usefonttheme[onlymath]{serif}
-\setCJKmainfont[BoldFont={SimHei},ItalicFont={FangSong}]{SimSun}
-\setCJKsansfont{SimSun}
-\setCJKmonofont{FangSong}
+\setCJKfamilyfont{hei}{SimHei}
+\newcommand{\hei}{\CJKfamily{hei}}% 黑体   (Windows自带simhei.ttf)
+\setCJKfamilyfont{siyuan}{SourceHanSerifCN-Regular}
+\newcommand{\sy}{\CJKfamily{siyuan}}
 \defaultfontfeatures{Mapping=tex-text}
 \usepackage{xunicode}
 \usepackage{xltxtra}
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\setCJKmainfont[BoldFont=SourceHanSerifCN-Bold]{SimSun}
+\setCJKsansfont[BoldFont=SourceHanSerifCN-Bold]{KaiTi}
+\setCJKmonofont[BoldFont=SourceHanSerifCN-Bold]{SimSun}
+
  
 \usepackage{colortbl,xcolor}
 \usepackage{hyperref}
@@ -357,14 +366,14 @@ $c^2 = a^2 + b^2$
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
   \frametitle{Verbatim}
   \begin{example}[Theorem Slide Code]
-    \begin{verbatim}
-    \begin{frame}
-      \frametitle{Theorem}
-      \begin{theorem}[勾股定理]
-	$c^2 = a^2 + b^2$
-      \end{theorem}
-    \end{frame}
-    \end{verbatim}
+  %   \begin{verbatim}
+  %   \begin{frame}
+  %     \frametitle{Theorem}
+  %     \begin{theorem}[勾股定理]
+	% $c^2 = a^2 + b^2$
+  %     \end{theorem}
+  %   \end{frame}
+  %   \end{verbatim}
   \end{example}
 \end{frame}
 
@@ -612,3 +621,7 @@ $x^2+y^2=z^2$\bcite{bcite1}
 %------------------------------------------------
 
 \end{document} 
+
+% Local Variables:
+% TeX-engine: xetex
+% End:
